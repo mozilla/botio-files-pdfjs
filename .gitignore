@@ -2,4 +2,5 @@ private/
 public/
 node_modules/
 refs/
+pdf-cache/
 

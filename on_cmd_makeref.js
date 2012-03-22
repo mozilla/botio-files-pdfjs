@@ -33,9 +33,13 @@ cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browse
 // Make refs
 //
 echo('>> Making references');
-if (exec('make bot_master').code !== 0) {
-  botio.message('+ **Make references:** FAILED');
-  exit(1); // fatal, no point in continuing
+
+var output = exec('make bot_master', {silent:false}).output,
+    failMatch = output.match(/TEST-UNEXPECTED-FAIL/g);
+
+if (failMatch) {
+  botio.message('+ **Make references:** FAILED ('+failMatch.length+' tests)');
+  fail = true; // non-fatal, continue
 } else {
   botio.message('+ **Make references:** Passed');
 }

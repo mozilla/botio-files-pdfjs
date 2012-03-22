@@ -40,8 +40,12 @@ cp('-Rf', __dirname+'/refs/*', './test/ref');
 // Run tests
 //
 echo('>> Running tests');
-if (exec('make bot_test', {silent:false}).code !== 0) {
-  botio.message('+ **Regression tests:** FAILED');
+
+var output = exec('make bot_test', {silent:false}).output,
+    failMatch = output.match(/TEST-UNEXPECTED-FAIL/g);
+
+if (failMatch) {
+  botio.message('+ **Regression tests:** FAILED ('+failMatch.length+' tests)');
   fail = true; // non-fatal, continue
 } else {
   botio.message('+ **Regression tests:** Passed');
