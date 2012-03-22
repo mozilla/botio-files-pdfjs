@@ -9,7 +9,7 @@ silent(true);
 // Lint
 //
 echo('>> Linting');
-if (exec('make lint', {silent:false}).code !== 0) {
+if (exec('node make lint', {silent:false}).code !== 0) {
   botio.message('+ **Lint:** FAILED');
   fail = true; // non-fatal, continue
 } else {

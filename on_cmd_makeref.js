@@ -9,7 +9,7 @@ silent(true);
 // Lint
 //
 echo('>> Linting');
-if (exec('make lint', {silent:false}).code !== 0) {
+if (exec('node make lint', {silent:false}).code !== 0) {
   botio.message('+ **Lint:** FAILED');
   fail = true; // non-fatal, continue
 } else {
@@ -34,7 +34,7 @@ cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browse
 //
 echo('>> Making references');
 
-var output = exec('make bot_master', {silent:false}).output,
+var output = exec('node make bot_master', {silent:false}).output,
     failMatch = output.match(/TEST-UNEXPECTED-FAIL/g);
 
 if (failMatch) {
