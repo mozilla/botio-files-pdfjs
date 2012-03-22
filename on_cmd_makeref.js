@@ -53,7 +53,7 @@ if (!test('-d', './test/ref')) {
 }
 
 //
-// Copy (possibly) new PDFs to local cache
+// Update local cache of PDF files
 //
 echo('>> Updating local PDF cache')
 mkdir('-p', __dirname+'/pdf-cache');

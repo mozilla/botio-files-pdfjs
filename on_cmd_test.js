@@ -9,7 +9,7 @@ silent(true);
 // Lint
 //
 echo('>> Linting');
-if (exec('make lint', {silent:false}).code !== 0) {
+if (exec('node make lint', {silent:false}).code !== 0) {
   botio.message('+ **Lint:** FAILED');
   fail = true; // non-fatal, continue
 } else {
@@ -41,7 +41,7 @@ cp('-Rf', __dirname+'/refs/*', './test/ref');
 //
 echo('>> Running tests');
 
-var output = exec('make bot_test', {silent:false}).output,
+var output = exec('node make bot_test', {silent:false}).output,
     failMatch = output.match(/TEST-UNEXPECTED-FAIL/g);
 
 if (failMatch) {
@@ -52,7 +52,7 @@ if (failMatch) {
 }
 
 //
-// Copy (possibly) new PDFs to local cache
+// Update local cache of PDF files
 //
 echo('>> Updating local PDF cache')
 mkdir('-p', __dirname+'/pdf-cache');
