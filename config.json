@@ -1,0 +1,11 @@
+{
+  "script_timeout": 3600,
+  "private_dir": "./private",
+  "public_dir": "./public",
+  "ip": "216.15.60.18",
+  "repo": "arturadib/pdf.js",
+  "port": "8877",
+  "whitelist": [
+    "arturadib", "hobbsmeter"
+  ]
+}
