@@ -23,19 +23,18 @@ echo('>> Copying cached PDF files to repo');
 cp(__dirname+'/pdf-cache/*', './test/pdfs');
 
 //
-// Deploy missing files
-//
-echo('>> Deploying missing files');
-cp('-f', __dirname+'/test-files/local.mk', '.');
-cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browser_manifests');
-
-//
 // Make refs
 //
 echo('>> Making references');
 
-var output = exec('node make bot_master', {silent:false}).output,
+cd('test');
+var output = exec('python -u test.py \
+                   --masterMode \
+                   --noPrompts \
+                   --browserManifestFile='+__dirname+'/test-files/browser_manifest.json',
+                   {silent:false}).output,
     failMatch = output.match(/TEST-UNEXPECTED-FAIL/g);
+cd('..');
 
 if (failMatch) {
   botio.message('+ **Make references:** FAILED ('+failMatch.length+' tests)');

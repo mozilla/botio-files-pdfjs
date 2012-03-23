@@ -23,13 +23,6 @@ echo('>> Copying cached PDF files to repo');
 cp(__dirname+'/pdf-cache/*', './test/pdfs');
 
 //
-// Deploy missing files
-//
-echo('>> Deploying missing files');
-cp('-f', __dirname+'/test-files/local.mk', '.');
-cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browser_manifests');
-
-//
 // Get ref snapshots
 //
 echo('>> Getting ref snapshots');
@@ -41,8 +34,12 @@ cp('-Rf', __dirname+'/refs/*', './test/ref');
 //
 echo('>> Running tests');
 
-var output = exec('node make bot_test', {silent:false}).output,
+cd('test');
+var output = exec('python -u test.py \
+                   --browserManifestFile='+__dirname+'/test-files/browser_manifest.json',
+                   {silent:false}).output,
     failMatch = output.match(/TEST-UNEXPECTED-FAIL/g);
+cd('..');
 
 if (failMatch) {
   botio.message('+ **Regression tests:** FAILED ('+failMatch.length+' tests)');
