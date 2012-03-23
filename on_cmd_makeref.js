@@ -9,11 +9,15 @@ silent(true);
 // Lint
 //
 echo('>> Linting');
-if (exec('node make lint', {silent:false}).code !== 0) {
+
+var output = exec('node make lint', {silent:false}).output,
+    successMatch = output.match('files checked, no errors found');
+
+if (successMatch) {
+  botio.message('+ **Lint:** Passed');
+} else {
   botio.message('+ **Lint:** FAILED');
   fail = true; // non-fatal, continue
-} else {
-  botio.message('+ **Lint:** Passed');
 }
 
 //
