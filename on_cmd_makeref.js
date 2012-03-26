@@ -37,14 +37,14 @@ var output = exec('python -u test.py \
                    --noPrompts \
                    --browserManifestFile='+__dirname+'/test-files/browser_manifest.json',
                    {silent:false}).output,
-    failMatch = output.match(/TEST-UNEXPECTED-FAIL/g);
+    successMatch = output.match(/All tests passed/g);
 cd('..');
 
-if (failMatch) {
-  botio.message('+ **Make references:** FAILED ('+failMatch.length+' tests)');
-  fail = true; // non-fatal, continue
-} else {
+if (successMatch) {
   botio.message('+ **Make references:** Passed');
+} else {
+  botio.message('+ **Make references:** FAILED');
+  fail = true; // non-fatal, continue
 }
 
 //
