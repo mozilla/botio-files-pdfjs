@@ -38,10 +38,8 @@ cp('-Rf', __dirname+'/refs/*', './test/ref');
 //
 echo('>> Running tests');
 
-cd('test');
 var output = exec('node make test', {silent:false}).output,
     successMatch = output.match(/All tests passed/g);
-cd('..');
 
 if (successMatch) {
   botio.message('+ **Regression tests:** Passed');

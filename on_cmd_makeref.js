@@ -31,10 +31,8 @@ cp(__dirname+'/pdf-cache/*', './test/pdfs');
 //
 echo('>> Making references');
 
-cd('test');
 var output = exec('node make makeref', {silent:false}).output,
     successMatch = output.match(/All tests passed/g);
-cd('..');
 
 if (successMatch) {
   botio.message('+ **Make references:** Passed');
