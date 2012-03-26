@@ -34,6 +34,12 @@ mkdir('-p', './test/ref');
 cp('-Rf', __dirname+'/refs/*', './test/ref');
 
 //
+// Deploy custom files
+//
+echo('>> Deploying custom files');
+cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browser_manifests');
+
+//
 // Run tests
 //
 echo('>> Running tests');

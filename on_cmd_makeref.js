@@ -27,6 +27,12 @@ echo('>> Copying cached PDF files to repo');
 cp(__dirname+'/pdf-cache/*', './test/pdfs');
 
 //
+// Deploy custom files
+//
+echo('>> Deploying custom files');
+cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browser_manifests');
+
+//
 // Make refs
 //
 echo('>> Making references');
