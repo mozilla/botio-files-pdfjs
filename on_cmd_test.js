@@ -40,7 +40,8 @@ echo('>> Running tests');
 
 cd('test');
 var output = exec('python -u test.py \
-                   --browserManifestFile='+__dirname+'/test-files/browser_manifest.json',
+                   --browserManifestFile='+__dirname+'/test-files/browser_manifest.json \
+                   --manifestFile=test_manifest.json',
                    {silent:false}).output,
     successMatch = output.match(/All tests passed/g);
 cd('..');
