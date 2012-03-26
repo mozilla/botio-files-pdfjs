@@ -42,14 +42,14 @@ cd('test');
 var output = exec('python -u test.py \
                    --browserManifestFile='+__dirname+'/test-files/browser_manifest.json',
                    {silent:false}).output,
-    failMatch = output.match(/TEST-UNEXPECTED-FAIL/g);
+    successMatch = output.match(/All tests passed/g);
 cd('..');
 
-if (failMatch) {
-  botio.message('+ **Regression tests:** FAILED ('+failMatch.length+' tests)');
-  fail = true; // non-fatal, continue
-} else {
+if (successMatch) {
   botio.message('+ **Regression tests:** Passed');
+} else {
+  botio.message('+ **Regression tests:** FAILED');
+  fail = true; // non-fatal, continue
 }
 
 //
