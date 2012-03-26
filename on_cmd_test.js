@@ -39,10 +39,7 @@ cp('-Rf', __dirname+'/refs/*', './test/ref');
 echo('>> Running tests');
 
 cd('test');
-var output = exec('python -u test.py \
-                   --browserManifestFile='+__dirname+'/test-files/browser_manifest.json \
-                   --manifestFile=test_manifest.json',
-                   {silent:false}).output,
+var output = exec('node make test', {silent:false}).output,
     successMatch = output.match(/All tests passed/g);
 cd('..');
 

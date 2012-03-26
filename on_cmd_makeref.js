@@ -32,11 +32,7 @@ cp(__dirname+'/pdf-cache/*', './test/pdfs');
 echo('>> Making references');
 
 cd('test');
-var output = exec('python -u test.py \
-                   --masterMode \
-                   --noPrompts \
-                   --browserManifestFile='+__dirname+'/test-files/browser_manifest.json',
-                   {silent:false}).output,
+var output = exec('node make makeref', {silent:false}).output,
     successMatch = output.match(/All tests passed/g);
 cd('..');
 
@@ -51,7 +47,7 @@ if (successMatch) {
 // Sanity check
 //
 if (!test('-d', './test/ref')) {
-  botio.message('+ **Make references:** FAILED (no refs found)');
+  botio.message('+ **Check references:** FAILED (no refs found)');
   exit(1); // fatal, no point in continuing
 }
 
