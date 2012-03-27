@@ -23,7 +23,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   //
   // Get PDFs from local cache
   //
-  echo('>> Copying cached PDF files to repo');
+  echo('>> Deploying cached PDF files');
   cp(__dirname+'/pdf-cache/*', './test/pdfs');
 
   //

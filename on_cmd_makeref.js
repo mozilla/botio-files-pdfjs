@@ -23,7 +23,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   //
   // Get PDFs from local cache
   //
-  echo('>> Copying cached PDF files to repo');
+  echo('>> Deploying cached PDF files');
   cp(__dirname+'/pdf-cache/*', './test/pdfs');
 
   //
@@ -48,20 +48,19 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
     }
 
     //
-    // Sanity check
-    //
-    if (!test('-d', './test/ref')) {
-      botio.message('+ **Check references:** FAILED (no refs found)');
-      exit(1); // fatal, no point in continuing
-    }
-
-    //
     // Update local cache of PDF files
     //
     echo('>> Updating local PDF cache')
     mkdir('-p', __dirname+'/pdf-cache');
     cp('./test/pdfs/*.pdf', __dirname+'/pdf-cache');
 
+    //
+    // Sanity check
+    //
+    if (!test('-d', './test/ref')) {
+      botio.message('+ **Check references:** FAILED (no refs found)');
+      exit(1); // fatal, no point in continuing
+    }
 
     //
     // Push up-to-date reference snapshots
