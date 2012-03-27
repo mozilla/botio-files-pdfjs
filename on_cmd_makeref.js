@@ -10,6 +10,7 @@ silent(true);
 //
 echo('>> Linting');
 
+// Using {async} to avoid unnecessary CPU usage
 exec('node make lint', {silent:false, async:true}, function(error, output) {
   var successMatch = output.match('files checked, no errors found');
 
@@ -37,6 +38,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   //
   echo('>> Making references');
 
+  // Using {async} to avoid unnecessary CPU usage
   exec('node make makeref', {silent:false, async:true}, function(error, output) {
     var successMatch = output.match(/All tests passed/g);
 
