@@ -59,6 +59,17 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
     } else {
       botio.message('+ **Regression tests:** FAILED');
       fail = true; // non-fatal, continue
+
+      //
+      // Copy reftest analyzer files
+      //
+      echo();
+      echo('>> Copying reftest analyzer files');
+      mv('-f', './test/eq.log', botio.public_dir);
+      mv('-f', './test/resources/reftest-analyzer.xhtml', botio.public_dir);
+
+      botio.message('Image differences available at:');
+      botio.message('+ '+botio.public_url+'/reftest-analyzer.xhtml#web=eq.log');
     }
 
     //
