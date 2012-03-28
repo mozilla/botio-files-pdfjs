@@ -50,21 +50,13 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
       botio.message('+ **Make references:** Passed');
     } else {
       botio.message('+ **Make references:** FAILED');
-      fail = true; // non-fatal, continue
+      exit(1); // fatal, no point in continuing
     }
-
-    //
-    // Update local cache of PDF files
-    //
-    echo();
-    echo('>> Updating local PDF cache')
-    mkdir('-p', __dirname+'/pdf-cache');
-    cp('./test/pdfs/*.pdf', __dirname+'/pdf-cache');
 
     //
     // Sanity check
     //
-    if (!test('-d', './test/ref')) {
+    if (!test('-d', './test/tmp')) {
       botio.message('+ **Check references:** FAILED (no refs found)');
       exit(1); // fatal, no point in continuing
     }
@@ -75,7 +67,15 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
     echo();
     echo('>> Updating ref snapshots');
     mkdir('-p', __dirname+'/refs');
-    cp('-Rf', './test/ref/*', __dirname+'/refs');
+    cp('-Rf', './test/tmp/*', __dirname+'/refs');
+
+    //
+    // Update local cache of PDF files
+    //
+    echo();
+    echo('>> Updating local PDF cache')
+    mkdir('-p', __dirname+'/pdf-cache');
+    cp('./test/pdfs/*.pdf', __dirname+'/pdf-cache');
 
     if (fail)
       exit(1);
