@@ -8,6 +8,7 @@ silent(true);
 //
 // Lint
 //
+echo();
 echo('>> Linting');
 
 // Using {async} to avoid unnecessary CPU usage
@@ -24,12 +25,14 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   //
   // Get PDFs from local cache
   //
+  echo();
   echo('>> Deploying cached PDF files');
   cp(__dirname+'/pdf-cache/*', './test/pdfs');
 
   //
   // Get ref snapshots
   //
+  echo();
   echo('>> Getting ref snapshots');
   mkdir('-p', './test/ref');
   cp('-Rf', __dirname+'/refs/*', './test/ref');
@@ -37,12 +40,14 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   //
   // Deploy custom files
   //
+  echo();
   echo('>> Deploying custom files');
   cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browser_manifests');
 
   //
   // Run tests
   //
+  echo();
   echo('>> Running tests');
 
   // Using {async} to avoid unnecessary CPU usage
@@ -59,6 +64,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
     //
     // Update local cache of PDF files
     //
+    echo();
     echo('>> Updating local PDF cache')
     mkdir('-p', __dirname+'/pdf-cache');
     cp('./test/pdfs/*.pdf', __dirname+'/pdf-cache');

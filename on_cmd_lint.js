@@ -8,6 +8,7 @@ silent(true);
 //
 // Lint
 //
+echo();
 echo('>> Linting');
 
 exec('node make lint', {silent:false, async:true}, function(error, output) {
