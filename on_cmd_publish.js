@@ -1,7 +1,14 @@
 var botio = require('botio');
 require('shelljs/global');
 
-// cp('-R', 'web/*', botio.jobInfo.public_dir);
+echo();
+echo('>> Making web site');
+exec('node make web');
+
+echo();
+echo('>> Moving files');
+mv('-f', 'build/gh-pages/*', botio.public_dir);
 
 botio.message('#### Published');
-botio.message('You can view your repo files at: '+botio.jobInfo.public_url);
+botio.message('You can browse the web files at:');
+botio.message('+ '+botio.public_url);
