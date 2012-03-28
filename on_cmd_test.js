@@ -51,7 +51,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   echo('>> Running tests');
 
   // Using {async} to avoid unnecessary CPU usage
-  exec('node make test', {silent:false, async:true}, function(error, output) {
+  exec('node make bottest', {silent:false, async:true}, function(error, output) {
     var successMatch = output.match(/All tests passed/g);
 
     if (successMatch) {
@@ -68,6 +68,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
       mv('-f', './test/eq.log', botio.public_dir);
       mv('-f', './test/resources/reftest-analyzer.xhtml', botio.public_dir);
 
+      botio.message();
       botio.message('Image differences available at:');
       botio.message('+ '+botio.public_url+'/reftest-analyzer.xhtml#web=eq.log');
     }
