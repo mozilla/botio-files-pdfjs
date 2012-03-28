@@ -56,7 +56,9 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
     //
     // Sanity check
     //
-    if (!test('-d', './test/tmp')) {
+    if (test('-d', './test/tmp')) {
+      botio.message('+ **Check references:** Passed');
+    } else {
       botio.message('+ **Check references:** FAILED (no refs found)');
       exit(1); // fatal, no point in continuing
     }
