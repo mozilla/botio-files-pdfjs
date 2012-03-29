@@ -69,8 +69,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
       mv('-f', './test/resources/reftest-analyzer.xhtml', botio.public_dir);
 
       botio.message();
-      botio.message('Image differences available at:');
-      botio.message('+ '+botio.public_url+'/reftest-analyzer.xhtml#web=eq.log');
+      botio.message('Image differences available at: '+botio.public_url+'/reftest-analyzer.xhtml#web=eq.log');
     }
 
     //
