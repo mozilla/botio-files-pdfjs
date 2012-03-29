@@ -2,6 +2,7 @@ var botio = require('botio');
 require('shelljs/global');
 
 // testing
+// test2
 
 //
 // Publish viewer to gh-pages
