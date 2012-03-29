@@ -10,6 +10,8 @@ echo('>> Moving files');
 mv('-f', 'build/gh-pages/*', botio.public_dir);
 
 botio.message('#### Published');
-botio.message('You can browse the web files at:');
 botio.message();
-botio.message('+ '+botio.public_url);
+botio.message('+ Viewer: '+botio.public_url+'/web/viewer.html');
+botio.message('+ Extension: '+botio.public_url+'/extensions/firefox/pdf.js.xpi');
+botio.message('+ Extension (AMO): '+botio.public_url+'/extensions/firefox/pdf.js.amo.xpi');
+
