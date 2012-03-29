@@ -43,7 +43,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   echo('>> Making references');
 
   // Using {async} to avoid unnecessary CPU usage
-  exec('node make makeref', {silent:false, async:true}, function(error, output) {
+  exec('node make botmakeref', {silent:false, async:true}, function(error, output) {
     var successMatch = output.match(/All tests passed/g);
 
     if (successMatch) {
