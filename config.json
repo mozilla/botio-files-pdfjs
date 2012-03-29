@@ -8,5 +8,6 @@
   "port": "8877",
   "whitelist": [
     "arturadib", "brendandahl", "notmasteryet", "jviereck", "cgjones", "andreasgal"
-  ]
+  ],
+  "use_queue": true 
 }
