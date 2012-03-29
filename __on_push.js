@@ -1,8 +1,7 @@
 var botio = require('botio');
 require('shelljs/global');
 
-// testing
-// test2
+// uber test
 
 //
 // Publish viewer to gh-pages
