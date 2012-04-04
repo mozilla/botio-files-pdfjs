@@ -7,7 +7,7 @@
   "repo": "mozilla/pdf.js",
   "port": "8877",
   "whitelist": [
-    "arturadib", "brendandahl", "notmasteryet", "jviereck", "cgjones", "andreasgal"
+    "arturadib", "brendandahl", "notmasteryet", "yurydelendik", "jviereck", "cgjones", "andreasgal"
   ],
   "use_queue": true 
 }
