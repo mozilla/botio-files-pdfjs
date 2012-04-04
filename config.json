@@ -3,7 +3,7 @@
   "script_timeout": 3600,
   "private_dir": "./private",
   "public_dir": "./public",
-  "ip": "23.21.150.44",
+  "ip": "107.22.172.223",
   "repo": "mozilla/pdf.js",
   "port": "8877",
   "whitelist": [
