@@ -6,5 +6,9 @@
    {
      "name":"chrome",
      "path": "C:/Users/Administrator/AppData/Local/Google/Chrome/Application/chrome.exe"
+   },
+   {
+     "name":"firefox-nightly",
+     "path":"C:/Program Files (x86)/Nightly/firefox.exe"
    }
 ]
