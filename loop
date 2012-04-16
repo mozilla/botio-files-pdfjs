@@ -1,0 +1,7 @@
+#/bin/bash
+
+while [ 1 ]
+do
+  botio start --user $1 --pwd $2
+done
+
