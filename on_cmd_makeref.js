@@ -44,7 +44,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
 
   // Using {async} to avoid unnecessary CPU usage
   exec('node make botmakeref', {silent:false, async:true}, function(error, output) {
-    var successMatch = output.match(/All tests passed/g);
+    var successMatch = output.match(/All regression tests passed/g);
 
     if (successMatch) {
       botio.message('+ **Make references:** Passed');
