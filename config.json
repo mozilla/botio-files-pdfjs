@@ -1,5 +1,8 @@
 {
   "name": "Bot.io (Windows)",
+  "handles": [
+    "botio", "botio-windows"
+  ],
   "script_timeout": 3600,
   "private_dir": "./private",
   "public_dir": "./public",
