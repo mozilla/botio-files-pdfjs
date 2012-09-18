@@ -59,6 +59,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
       botio.message('+ **Unit tests:** Passed');
     } else {
       botio.message('+ **Unit tests:** FAILED');
+      fail = true; // non-fatal, continue
     }
     if (regSuccessMatch) {
       botio.message('+ **Regression tests:** Passed');
