@@ -53,12 +53,20 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   // Using {async} to avoid unnecessary CPU usage
   exec('node make bottest', {silent:false, async:true}, function(error, output) {
     var unitSuccessMatch = output.match(/All unit tests passed/g);
+    var fontSuccessMatch = output.match(/All font tests passed/g);
     var regSuccessMatch = output.match(/All regression tests passed/g);
 
+    if (fontSuccessMatch) {
+      botio.message('+ **Font tests:** Passed');
+    } else {
+      botio.message('+ **Font tests:** FAILED');
+      fail = true; // non-fatal, continue
+    }
     if (unitSuccessMatch) {
       botio.message('+ **Unit tests:** Passed');
     } else {
       botio.message('+ **Unit tests:** FAILED');
+      fail = true; // non-fatal, continue
     }
     if (regSuccessMatch) {
       botio.message('+ **Regression tests:** Passed');
