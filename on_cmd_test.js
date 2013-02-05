@@ -5,23 +5,7 @@ var fail = false;
 
 silent(true);
 
-//
-// Lint
-//
-echo();
-echo('>> Linting');
-
-// Using {async} to avoid unnecessary CPU usage
-exec('node make lint', {silent:false, async:true}, function(error, output) {
-  var successMatch = output.match('files checked, no errors found');
-
-  if (successMatch) {
-    botio.message('+ **Lint:** Passed');
-  } else {
-    botio.message('+ **Lint:** FAILED');
-    fail = true; // non-fatal, continue
-  }
-
+(function runTesting() {
   //
   // Get PDFs from local cache
   //
@@ -97,4 +81,4 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
     if (fail)
       exit(1);
   }); // exec test
-}); // exec lint
+})(); // runTesting
