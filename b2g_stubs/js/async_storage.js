@@ -1,9 +1,9 @@
 // Mocks for testing the B2G PDF Viewer in the browser.
 var asyncStorage = {
-  getItem: function() {
-    return {};
+  getItem: function(key, callback) {
+    callback(null);
   },
-  setItem: function() {}
+  setItem: function(key, value) {}
 };
 
 window.navigator.mozSetMessageHandler = function(activity, callback) {
