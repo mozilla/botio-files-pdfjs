@@ -65,6 +65,7 @@ silent(true);
       echo('>> Copying reftest analyzer files');
       mv('-f', './test/eq.log', botio.public_dir);
       mv('-f', './test/resources/reftest-analyzer.xhtml', botio.public_dir);
+      mv('-f', './test/test_snapshots', botio.public_dir + '/');
 
       botio.message();
       botio.message('Image differences available at: '+botio.public_url+'/reftest-analyzer.xhtml#web=eq.log');
