@@ -64,11 +64,13 @@ silent(true);
       echo();
       echo('>> Copying reftest analyzer files');
       mv('-f', './test/eq.log', botio.public_dir);
-      mv('-f', './test/resources/reftest-analyzer.xhtml', botio.public_dir);
+      mv('-f', './test/resources/reftest-analyzer.html', botio.public_dir);
+      mv('-f', './test/resources/reftest-analyzer.css', botio.public_dir);
+      mv('-f', './test/resources/reftest-analyzer.js', botio.public_dir);
       mv('-f', './test/test_snapshots', botio.public_dir + '/');
 
       botio.message();
-      botio.message('Image differences available at: '+botio.public_url+'/reftest-analyzer.xhtml#web=eq.log');
+      botio.message('Image differences available at: '+botio.public_url+'/reftest-analyzer.html#web=eq.log');
     }
 
     //
