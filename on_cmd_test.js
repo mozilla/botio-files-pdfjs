@@ -3,6 +3,10 @@ require('shelljs/global');
 
 var fail = false;
 
+exec('npm install', {async:false});
+exec('git submodule init', {async:false});
+exec('git submodule update', {async:false});
+
 silent(true);
 
 (function runTesting() {
