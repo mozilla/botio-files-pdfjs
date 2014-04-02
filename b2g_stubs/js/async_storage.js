@@ -3,7 +3,11 @@ var asyncStorage = {
   getItem: function(key, callback) {
     callback(null);
   },
-  setItem: function(key, value) {}
+  setItem: function(key, value, callback) {
+    if (callback) {
+      callback(true);
+    }
+  }
 };
 
 window.navigator.mozSetMessageHandler = function(activity, callback) {
