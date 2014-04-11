@@ -12,5 +12,4 @@ exec('node make web');
 
 // This dir should have its own .git/
 cd('build/gh-pages'); 
-exec('git commit -am "Auto-updating via bot"');
-exec('git push origin gh-pages');
+exec('git push --force origin gh-pages');
