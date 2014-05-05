@@ -1,5 +1,6 @@
 var botio = require(process.env['BOTIO_MODULE']);
 require('shelljs/global');
+exec('npm install');
 
 echo();
 echo('>> Making web site');
