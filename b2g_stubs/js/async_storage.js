@@ -11,13 +11,17 @@ var asyncStorage = {
 };
 
 window.navigator.mozSetMessageHandler = function(activity, callback) {
-  setTimeout(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/shared/tracemonkey.pdf');
+  xhr.responseType = 'blob';
+  xhr.onload = function () {
     callback({
       source: {
         data: {
-          url: '/shared/tracemonkey.pdf'
+          blob: xhr.response
         }
       }
     });
-  })
+  };
+  xhr.send(null);
 };
