@@ -3,17 +3,25 @@ var asyncStorage = {
   getItem: function(key, callback) {
     callback(null);
   },
-  setItem: function(key, value) {}
+  setItem: function(key, value, callback) {
+    if (callback) {
+      callback(true);
+    }
+  }
 };
 
 window.navigator.mozSetMessageHandler = function(activity, callback) {
-  setTimeout(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/shared/tracemonkey.pdf');
+  xhr.responseType = 'blob';
+  xhr.onload = function () {
     callback({
       source: {
         data: {
-          url: '/shared/tracemonkey.pdf'
+          blob: xhr.response
         }
       }
     });
-  })
+  };
+  xhr.send(null);
 };
