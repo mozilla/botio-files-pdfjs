@@ -18,7 +18,8 @@ window.navigator.mozSetMessageHandler = function(activity, callback) {
     callback({
       source: {
         data: {
-          blob: xhr.response
+          blob: xhr.response,
+          url: 'http://cdn.mozilla.net/pdfjs/tracemonkey.pdf'
         }
       }
     });
