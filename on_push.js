@@ -1,6 +1,13 @@
 var botio = require(process.env['BOTIO_MODULE']);
 require('shelljs/global');
 
+try {
+  var jobInfo = JSON.parse(process.env['BOTIO_JOBINFO']);
+  var reason = 'See mozilla/pdf.js@' + jobInfo.head_sha;
+  process.env['PDFJS_UPDATE_REASON'] = reason;
+  echo('>> Setting reason to: ' + reason);
+} catch (_) {}
+
 exec('npm install', {async:false});
 
 // uber test
