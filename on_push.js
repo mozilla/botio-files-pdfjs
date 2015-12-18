@@ -24,6 +24,8 @@ exec('node ' + path.join(__dirname, 'signxpi.js') + ' ./build/gh-pages/extension
 
 // This dir should have its own .git/
 cd('build/gh-pages'); 
+exec('git add extensions/firefox/pdf.js.xpi');
+exec('git commit --amend --no-edit');
 exec('git push --force origin gh-pages');
 cd('../..');
 
