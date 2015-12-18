@@ -1,4 +1,5 @@
 var botio = require(process.env['BOTIO_MODULE']);
+var path = require('path');
 require('shelljs/global');
 
 try {
@@ -15,7 +16,11 @@ exec('npm install', {async:false});
 //
 // Publish viewer to gh-pages
 //
-exec('node make web'); 
+exec('node make web');
+//
+// Sign the extension
+//
+exec('node ' + path.join(__dirname, 'signxpi.js') + ' ./build/gh-pages/extensions/firefox/pdf.js.xpi');
 
 // This dir should have its own .git/
 cd('build/gh-pages'); 
