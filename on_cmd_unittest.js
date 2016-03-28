@@ -10,6 +10,13 @@ exec('git submodule update', {async:false});
 silent(true);
 
 //
+// Get PDFs from local cache
+//
+echo();
+echo('>> Deploying cached PDF files');
+cp(__dirname+'/pdf-cache/*', './test/pdfs');
+
+//
 // Deploy custom files
 //
 echo();
@@ -31,6 +38,14 @@ exec('node make unittest', {silent:false, async:true}, function(error, output) {
     botio.message('+ **Unit Tests:** FAILED');
     fail = true; // non-fatal, continue
   }
+
+  //
+  // Update local cache of PDF files
+  //
+  echo();
+  echo('>> Updating local PDF cache')
+  mkdir('-p', __dirname+'/pdf-cache');
+  cp('./test/pdfs/*.pdf', __dirname+'/pdf-cache');
 
   if (fail)
     exit(1);
