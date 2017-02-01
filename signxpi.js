@@ -166,7 +166,7 @@ function downloadFile(downloadUrl, mirror) {
   var response = '';
   var req = https.get(options, function (res) {
     var statusCode = res.statusCode;
-    if (statusCode == 302) {
+    if (statusCode == 301 || statusCode == 302) {
       downloadFile(res.headers.location, true);
       return;
     }

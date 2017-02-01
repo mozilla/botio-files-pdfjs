@@ -15,7 +15,7 @@ silent(true);
   //
   echo();
   echo('>> Deploying cached PDF files');
-  cp(__dirname+'/pdf-cache/*', './test/pdfs');
+  cp('-n', __dirname+'/pdf-cache/*', './test/pdfs');
 
   //
   // Get ref snapshots
