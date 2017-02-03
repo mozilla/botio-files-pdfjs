@@ -1,7 +1,7 @@
 { "name": "botio-scripts"
 , "version": "0.0.1"
 , "dependencies": {
-    "botio": "latest",
-    "shelljs": "latest"
+    "botio": "file:../botio",
+    "shelljs": "0.0.5pre4"
   }
 }
