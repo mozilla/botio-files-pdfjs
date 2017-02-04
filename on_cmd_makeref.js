@@ -31,7 +31,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   //
   echo();
   echo('>> Deploying cached PDF files');
-  cp('-n', __dirname+'/pdf-cache/*', './test/pdfs');
+  cp(__dirname+'/pdf-cache/*', './test/pdfs');
 
   //
   // Deploy custom files
