@@ -2,6 +2,7 @@
 , "version": "0.0.1"
 , "dependencies": {
     "botio": "file:../botio",
-    "shelljs": "0.0.5pre4"
+    "shelljs": "0.0.5pre4",
+    "jsonwebtoken": "5.4.1"
   }
 }
