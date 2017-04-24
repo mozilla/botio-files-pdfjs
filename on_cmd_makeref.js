@@ -16,7 +16,7 @@ echo();
 echo('>> Linting');
 
 // Using {async} to avoid unnecessary CPU usage
-exec('node make lint', {silent:false, async:true}, function(error, output) {
+exec('gulp lint', {silent:false, async:true}, function(error, output) {
   var successMatch = output.match('files checked, no errors found');
 
   if (successMatch) {
@@ -47,7 +47,7 @@ exec('node make lint', {silent:false, async:true}, function(error, output) {
   echo('>> Making references');
 
   // Using {async} to avoid unnecessary CPU usage
-  exec('node make botmakeref', {silent:false, async:true}, function(error, output) {
+  exec('gulp botmakeref', {silent:false, async:true}, function(error, output) {
     var successMatch = output.match(/All regression tests passed/g);
 
     if (successMatch) {

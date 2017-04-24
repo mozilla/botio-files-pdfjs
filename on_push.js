@@ -16,7 +16,7 @@ exec('npm install', {async:false});
 //
 // Publish viewer to gh-pages
 //
-exec('node make web');
+exec('gulp web');
 //
 // Sign the extension
 //
@@ -32,7 +32,7 @@ cd('../..');
 //
 // Publish library to pdfjs-dist
 //
-exec('node make dist');
+exec('gulp dist');
 
 cd('build/dist');
 exec('git push --tags git@github.com:mozilla/pdfjs-dist.git master');
