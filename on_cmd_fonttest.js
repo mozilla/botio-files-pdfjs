@@ -22,7 +22,7 @@ cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browse
 echo();
 echo('>> Font Tests');
 
-exec('node make fonttest', {silent:false, async:true}, function(error, output) {
+exec('gulp fonttest', {silent:false, async:true}, function(error, output) {
   var successMatch = output.match(/All font tests passed/g);
 
   if (successMatch) {

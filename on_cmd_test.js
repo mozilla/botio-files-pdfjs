@@ -39,7 +39,7 @@ silent(true);
   echo('>> Running tests');
 
   // Using {async} to avoid unnecessary CPU usage
-  exec('node make bottest', {silent:false, async:true}, function(error, output) {
+  exec('gulp bottest', {silent:false, async:true}, function(error, output) {
     var unitSuccessMatch = output.match(/All unit tests passed/g);
     var fontSuccessMatch = output.match(/All font tests passed/g);
     var regSuccessMatch = output.match(/All regression tests passed/g);
