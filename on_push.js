@@ -9,18 +9,18 @@ try {
   echo('>> Setting reason to: ' + reason);
 } catch (_) {}
 
-exec('npm install', {async:false});
+exec('npm install', {async:true}, function () {
 
 // uber test
 
 //
 // Publish viewer to gh-pages
 //
-exec('gulp web');
+exec('gulp web', {async:true}, function() {
 //
 // Sign the extension
 //
-exec('node ' + path.join(__dirname, 'signxpi.js') + ' ./build/gh-pages/extensions/firefox/pdf.js.xpi');
+exec('node ' + path.join(__dirname, 'signxpi.js') + ' ./build/gh-pages/extensions/firefox/pdf.js.xpi', {async:true}, function () {
 
 // This dir should have its own .git/
 cd('build/gh-pages'); 
@@ -32,9 +32,14 @@ cd('../..');
 //
 // Publish library to pdfjs-dist
 //
-exec('gulp dist');
+exec('gulp dist', {async:true}, function() {
 
 cd('build/dist');
 exec('git push --tags git@github.com:mozilla/pdfjs-dist.git master');
 exec('npm publish');
 cd('../..');
+
+}); // gulp dist
+}); // node signxpi
+}); // gulp web
+}); // npm install

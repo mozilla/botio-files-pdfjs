@@ -3,7 +3,7 @@ require('shelljs/global');
 
 var fail = false;
 
-exec('npm install', {async:false});
+exec('npm install', {async:true}, function() {
 exec('git submodule init', {async:false});
 exec('git submodule update', {async:false});
 
@@ -89,3 +89,5 @@ silent(true);
       exit(1);
   }); // exec test
 })(); // runTesting
+
+}); // npm install
