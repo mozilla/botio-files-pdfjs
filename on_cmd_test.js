@@ -38,6 +38,8 @@ silent(true);
   echo();
   echo('>> Running tests');
 
+  process.env['PDFJS_NEXT'] = 'true'; // Disable Babel translation.
+
   // Using {async} to avoid unnecessary CPU usage
   exec('gulp bottest', {silent:false, async:true}, function(error, output) {
     var unitSuccessMatch = output.match(/All unit tests passed/g);
