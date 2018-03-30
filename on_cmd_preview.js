@@ -13,4 +13,3 @@ mv('-f', 'build/gh-pages/*', botio.public_dir);
 botio.message('#### Published');
 botio.message();
 botio.message('+ Viewer: '+botio.public_url+'/web/viewer.html');
-botio.message('+ Extension: '+botio.public_url+'/extensions/firefox/pdf.js.xpi');
