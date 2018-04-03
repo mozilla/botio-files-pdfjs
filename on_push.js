@@ -17,14 +17,9 @@ exec('npm install', {async:true}, function () {
 // Publish viewer to gh-pages
 //
 exec('gulp web', {async:true}, function() {
-//
-// Sign the extension
-//
-exec('node ' + path.join(__dirname, 'signxpi.js') + ' ./build/gh-pages/extensions/firefox/pdf.js.xpi', {async:true}, function () {
 
 // This dir should have its own .git/
 cd('build/gh-pages'); 
-exec('git add extensions/firefox/pdf.js.xpi');
 exec('git commit --amend --no-edit');
 exec('git push --force origin gh-pages');
 cd('../..');
@@ -40,6 +35,5 @@ exec('npm publish');
 cd('../..');
 
 }); // gulp dist
-}); // node signxpi
 }); // gulp web
 }); // npm install
