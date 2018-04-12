@@ -11,18 +11,15 @@ try {
 
 exec('npm install', {async:true}, function () {
 
-// uber test
-
 //
-// Publish viewer to gh-pages
+// Publish library to pdfjs-dist
 //
-exec('gulp web', {async:true}, function() {
+exec('gulp dist', {async:true}, function() {
 
-// This dir should have its own .git/
-cd('build/gh-pages');
-exec('git commit --amend --no-edit');
-exec('git push --force origin gh-pages');
+cd('build/dist');
+exec('git push --tags git@github.com:mozilla/pdfjs-dist.git master');
+exec('npm publish' + (jobInfo.prerelease ? ' --tag next' : ''));
 cd('../..');
 
-}); // gulp web
+}); // gulp dist
 }); // npm install
