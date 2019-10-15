@@ -22,8 +22,6 @@ cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browse
 echo();
 echo('>> Font Tests');
 
-process.env['SKIP_BABEL'] = 'true'; // Disable Babel translation.
-
 exec('gulp fonttest', {silent:false, async:true}, function(error, output) {
   var successMatch = output.match(/All font tests passed/g);
 

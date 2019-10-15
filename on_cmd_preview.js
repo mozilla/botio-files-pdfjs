@@ -12,4 +12,5 @@ mv('-f', 'build/gh-pages/*', botio.public_dir);
 
 botio.message('#### Published');
 botio.message();
-botio.message('+ Viewer: '+botio.public_url+'/web/viewer.html');
+botio.message('+ Viewer: ' + botio.public_url + '/web/viewer.html');
+botio.message('+ Viewer (ES5): ' + botio.public_url + '/es5/web/viewer.html');
