@@ -46,8 +46,6 @@ exec('gulp lint', {silent:false, async:true}, function(error, output) {
   echo();
   echo('>> Making references');
 
-  process.env['SKIP_BABEL'] = 'true'; // Disable Babel translation.
-
   // Using {async} to avoid unnecessary CPU usage
   exec('gulp botmakeref', {silent:false, async:true}, function(error, output) {
     var successMatch = output.match(/All regression tests passed/g);
