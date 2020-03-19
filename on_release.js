@@ -17,7 +17,14 @@ exec('npm install', {async:true}, function () {
 exec('gulp dist', {async:true}, function() {
 
 cd('build/dist');
-exec('git push --tags git@github.com:mozilla/pdfjs-dist.git master');
+if (jobInfo.prerelease) {
+  // The release hook doesn't differentiate between making a new release
+  // and updating an existing release, so both actions will trigger this
+  // bot action. However, we only want to push to `pdfjs-dist` when making
+  // a new prerelease, because otherwise updating an existing prerelease
+  // to make it stable would push the same commit again.
+  exec('git push --tags git@github.com:mozilla/pdfjs-dist.git master');
+}
 exec('npm publish' + (jobInfo.prerelease ? ' --tag next' : ''));
 cd('../..');
 
