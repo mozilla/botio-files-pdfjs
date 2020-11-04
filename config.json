@@ -10,7 +10,7 @@
   "repo": "mozilla/pdf.js",
   "port": "8877",
   "whitelist": [
-    "arturadib", "brendandahl", "notmasteryet", "yurydelendik", "jviereck", "cgjones", "andreasgal", "gigaherz", "saebekassebil", "mduan", "vyv03354", "waddlesplash", "jbuck", "Snuffleupagus", "timvandermeij", "Rob--W"
+    "brendandahl", "notmasteryet", "yurydelendik", "vyv03354", "Snuffleupagus", "timvandermeij", "Rob--W", "calixteman"
   ],
   "use_queue": true 
 }
