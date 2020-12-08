@@ -40,6 +40,7 @@ silent(true);
 
   // Using {async} to avoid unnecessary CPU usage
   exec('gulp bottest', {silent:false, async:true}, function(error, output) {
+    var integrationSuccessMatch = output.match(/All integration tests passed/g);
     var unitSuccessMatch = output.match(/All unit tests passed/g);
     var fontSuccessMatch = output.match(/All font tests passed/g);
     var regSuccessMatch = output.match(/All regression tests passed/g);
@@ -54,6 +55,12 @@ silent(true);
       botio.message('+ **Unit tests:** Passed');
     } else {
       botio.message('+ **Unit tests:** FAILED');
+      fail = true; // non-fatal, continue
+    }
+    if (integrationSuccessMatch) {
+      botio.message('+ **Integration Tests:** Passed');
+    } else {
+      botio.message('+ **Integration Tests:** FAILED');
       fail = true; // non-fatal, continue
     }
     if (regSuccessMatch) {
