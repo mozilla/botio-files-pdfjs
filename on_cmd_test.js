@@ -69,6 +69,29 @@ silent(true);
       botio.message('+ **Regression tests:** FAILED');
       fail = true; // non-fatal, continue
 
+      // Include a detailed summary of the ref-test failures.
+      if (output.match(/OHNOES!  Some tests failed!/g)) {
+        const details = [];
+
+        const numErrors = output.match(/  errors: \d+/g);
+        if (numErrors) {
+          details.push(numErrors[0]);
+        }
+        const numEqFailures = output.match(/  different ref\/snapshot: \d+/g);
+        if (numEqFailures) {
+          details.push(numEqFailures[0]);
+        }
+        const numFBFFailures = output.match(/  different first\/second rendering: \d+/g);
+        if (numFBFFailures) {
+          details.push(numFBFFailures[0]);
+        }
+
+        if (details.length > 0) {
+          botio.message();
+          botio.message("```\n" + details.join("\n") + "\n```");
+        }
+      }
+
       //
       // Copy reftest analyzer files
       //
