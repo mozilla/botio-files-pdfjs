@@ -88,7 +88,11 @@ silent(true);
 
         if (details.length > 0) {
           botio.message();
-          botio.message("```\n" + details.join("\n") + "\n```");
+          botio.message("```");
+          for (const line of details) {
+            botio.message(line);
+          }
+          botio.message("```");
         }
       }
 
