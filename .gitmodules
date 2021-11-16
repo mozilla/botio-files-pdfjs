@@ -1,9 +1,0 @@
-[submodule "b2g_stubs/elements/gaia-theme"]
-	path = b2g_stubs/elements/gaia-theme
-	url = https://github.com/gaia-components/gaia-theme
-[submodule "b2g_stubs/elements/gaia-header"]
-	path = b2g_stubs/elements/gaia-header
-	url = https://github.com/gaia-components/gaia-header
-[submodule "b2g_stubs/elements/gaia-icons"]
-	path = b2g_stubs/elements/gaia-icons
-	url = https://github.com/gaia-components/gaia-icons
