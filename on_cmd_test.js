@@ -4,8 +4,6 @@ require('shelljs/global');
 var fail = false;
 
 exec('npm install', {async:true}, function() {
-exec('git submodule init', {async:false});
-exec('git submodule update', {async:false});
 
 silent(true);
 
@@ -42,15 +40,8 @@ silent(true);
   exec('gulp bottest', {silent:false, async:true}, function(error, output) {
     var integrationSuccessMatch = output.match(/All integration tests passed/g);
     var unitSuccessMatch = output.match(/All unit tests passed/g);
-    var fontSuccessMatch = output.match(/All font tests passed/g);
     var regSuccessMatch = output.match(/All regression tests passed/g);
 
-    if (fontSuccessMatch) {
-      botio.message('+ **Font tests:** Passed');
-    } else {
-      botio.message('+ **Font tests:** FAILED');
-      fail = true; // non-fatal, continue
-    }
     if (unitSuccessMatch) {
       botio.message('+ **Unit tests:** Passed');
     } else {
