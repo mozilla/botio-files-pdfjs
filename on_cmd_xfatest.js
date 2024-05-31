@@ -37,7 +37,7 @@ silent(true);
   echo('>> Running tests');
 
   // Using {async} to avoid unnecessary CPU usage
-  exec('gulp botxfatest', {silent:false, async:true}, function(error, output) {
+  exec('npx gulp botxfatest', {silent:false, async:true}, function(error, output) {
     var integrationSuccessMatch = output.match(/All integration tests passed/g);
     var unitSuccessMatch = output.match(/All unit tests passed/g);
     var regSuccessMatch = output.match(/All regression tests passed/g);

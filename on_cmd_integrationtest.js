@@ -27,7 +27,7 @@ cp('-f', __dirname+'/test-files/browser_manifest.json', './test/resources/browse
 echo();
 echo('>> Integration Tests');
 
-exec('gulp integrationtest', {silent:false, async:true}, function(error, output) {
+exec('npx gulp integrationtest', {silent:false, async:true}, function(error, output) {
   var successMatch = output.match(/All integration tests passed/g);
 
   if (successMatch) {
