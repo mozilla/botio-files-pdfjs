@@ -14,12 +14,12 @@ exec('npm install', {async:true}, function () {
 //
 // Publish library to pdfjs-dist
 //
-exec('gulp dist', {async:true}, function() {
+exec('npx gulp dist', {async:true}, function() {
 
 cd('build/dist');
 exec('git push --tags git@github.com:mozilla/pdfjs-dist.git master');
 exec('npm publish');
 cd('../..');
 
-}); // gulp dist
+}); // npx gulp dist
 }); // npm install

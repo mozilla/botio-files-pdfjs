@@ -25,7 +25,7 @@ exec('npm install', {async:true}, function() {
   echo('>> Making references');
 
   // Using {async} to avoid unnecessary CPU usage
-  exec('gulp botmakeref', {silent:false, async:true}, function(error, output) {
+  exec('npx gulp botmakeref', {silent:false, async:true}, function(error, output) {
     var successMatch = output.match(/All regression tests passed/g);
 
     if (successMatch) {

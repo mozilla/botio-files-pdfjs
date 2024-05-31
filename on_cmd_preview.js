@@ -4,7 +4,7 @@ exec('npm install');
 
 echo();
 echo('>> Making web site');
-exec('gulp web');
+exec('npx gulp web');
 
 echo();
 echo('>> Moving files');

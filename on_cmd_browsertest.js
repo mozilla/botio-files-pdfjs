@@ -37,7 +37,7 @@ silent(true);
   echo('>> Regression tests');
 
   // Using {async} to avoid unnecessary CPU usage
-  exec('gulp botbrowsertest', {silent:false, async:true}, function(error, output) {
+  exec('npx gulp botbrowsertest', {silent:false, async:true}, function(error, output) {
     var regSuccessMatch = output.match(/All regression tests passed/g);
 
     if (regSuccessMatch) {
