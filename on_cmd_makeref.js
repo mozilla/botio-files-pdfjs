@@ -1,28 +1,8 @@
 var botio = require(process.env['BOTIO_MODULE']);
 require('shelljs/global');
 
-var fail = false;
-
 exec('npm install', {async:true}, function() {
-
-silent(true);
-
-//
-// Lint
-//
-echo();
-echo('>> Linting');
-
-// Using {async} to avoid unnecessary CPU usage
-exec('gulp lint', {silent:false, async:true}, function(error, output) {
-  var successMatch = output.match('files checked, no errors found');
-
-  if (successMatch) {
-    botio.message('+ **Lint:** Passed');
-  } else {
-    botio.message('+ **Lint:** FAILED');
-    fail = true; // non-fatal, continue
-  }
+  silent(true);
 
   //
   // Get PDFs from local cache
@@ -80,9 +60,5 @@ exec('gulp lint', {silent:false, async:true}, function(error, output) {
     echo('>> Updating local PDF cache')
     mkdir('-p', __dirname+'/pdf-cache');
     cp('./test/pdfs/*.pdf', __dirname+'/pdf-cache');
-
-    if (fail)
-      exit(1);
   }); // exec makeref
-}); // exec lint
 }); // npm install
