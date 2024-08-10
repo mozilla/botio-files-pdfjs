@@ -3,7 +3,7 @@ require('shelljs/global');
 
 var fail = false;
 
-exec('npm install', {async:false});
+exec('npm ci', {async:false});
 
 silent(true);
 
