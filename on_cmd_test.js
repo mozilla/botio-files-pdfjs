@@ -3,7 +3,7 @@ require('shelljs/global');
 
 var fail = false;
 
-exec('npm install', {async:true}, function() {
+exec('npm ci', {async:true}, function() {
 
 silent(true);
 
@@ -115,4 +115,4 @@ silent(true);
   }); // exec test
 })(); // runTesting
 
-}); // npm install
+}); // npm ci

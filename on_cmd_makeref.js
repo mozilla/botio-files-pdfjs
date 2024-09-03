@@ -1,7 +1,7 @@
 var botio = require(process.env['BOTIO_MODULE']);
 require('shelljs/global');
 
-exec('npm install', {async:true}, function() {
+exec('npm ci', {async:true}, function() {
   silent(true);
 
   //
@@ -61,4 +61,4 @@ exec('npm install', {async:true}, function() {
     mkdir('-p', __dirname+'/pdf-cache');
     cp('./test/pdfs/*.pdf', __dirname+'/pdf-cache');
   }); // exec makeref
-}); // npm install
+}); // npm ci
